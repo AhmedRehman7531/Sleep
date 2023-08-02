@@ -12,3 +12,31 @@ SELECT *
 FROM `sql-testing-389901.Sleep7421.Sleep1` s1
 INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
 
+#Inserting New Data
+INSERT INTO `sql-testing-389901.Sleep7421.Sleep1` values
+(375, 'Male', 59, 'Nurse', 5.3, 8), (376, 'Female', 43, 'Engineer', 6.6, 4)
+
+#View New Input Data
+Select * 
+From `sql-testing-389901.Sleep7421.Sleep1`
+where Person_ID > 375
+
+#Filter by Occupations to only show Doctor, Lawyer, or Nurse
+SELECT *
+FROM `sql-testing-389901.Sleep7421.Sleep1` s1
+INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
+WHERE Occupation IN ('Doctor', 'Lawyer', 'Nurse')
+Limit 5
+
+#Using Null/Not Null Filter
+SELECT *
+FROM `sql-testing-389901.Sleep7421.Sleep1` s1
+INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
+where Age IS Not Null
+
+#Average Steps each gender takes and their Quaility of Sleep
+SELECT ROUND(AVG(Daily_Steps),0) AS Avg_Steps, Gender, ROUND(AVG(Quality_of_Sleep),0) AS Avg_Quality_Sleep
+FROM `sql-testing-389901.Sleep7421.Sleep1` s1
+INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
+GROUP BY Gender 
+
