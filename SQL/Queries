@@ -40,3 +40,13 @@ FROM `sql-testing-389901.Sleep7421.Sleep1` s1
 INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
 GROUP BY Gender 
 
+#Using CASE statement to label patients Normal or at risk
+SELECT s1.Person_ID,s1.Quality_of_Sleep,s2.Stress_Level, 
+CASE
+  WHEN s1.Quality_of_Sleep < 6 AND s2.Stress_Level > 6 THEN 'AT RISK'
+  ELSE 'NORMAL' END AS RISK
+FROM `sql-testing-389901.Sleep7421.Sleep1` s1
+INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
+
+
+
