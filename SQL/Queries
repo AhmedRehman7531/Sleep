@@ -1,0 +1,14 @@
+#Broke .csv into two to enable join function. Ooverview of table 1 and 2. 
+SELECT *
+FROM `sql-testing-389901.Sleep7421.Sleep1` 
+LIMIT 1000
+
+SELECT *
+FROM `sql-testing-389901.Sleep7421.Sleep2` 
+LIMIT 1000
+
+#Combining the two tables
+SELECT *
+FROM `sql-testing-389901.Sleep7421.Sleep1` s1
+INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
+
