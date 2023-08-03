@@ -48,5 +48,12 @@ CASE
 FROM `sql-testing-389901.Sleep7421.Sleep1` s1
 INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
 
+#Select all occupations that have greater than 6 Stress level
+SELECT ROUND(AVG(Stress_Level),1) AS Stress, Occupation
+FROM `sql-testing-389901.Sleep7421.Sleep1` s1
+INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
+GROUP BY Occupation
+HAVING Stress > 6
+ORDER BY Stress DESC
 
 
