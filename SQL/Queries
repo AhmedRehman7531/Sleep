@@ -56,4 +56,7 @@ GROUP BY Occupation
 HAVING Stress > 6
 ORDER BY Stress DESC
 
-
+# Using Partition Function 
+SELECT Gender, BMI_Category, Heart_Rate, Count(BMI_Category) OVER (PARTITION BY BMI_Category)
+FROM `sql-testing-389901.Sleep7421.Sleep1` s1
+INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
