@@ -60,3 +60,11 @@ ORDER BY Stress DESC
 SELECT Gender, BMI_Category, Heart_Rate, Count(BMI_Category) OVER (PARTITION BY BMI_Category)
 FROM `sql-testing-389901.Sleep7421.Sleep1` s1
 INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
+
+# What is the most common sleep discorder for participants between 40 and 50?
+SELECT Sleep_Disorder, Count(Sleep_Disorder) As numb_disorder
+FROM `sql-testing-389901.Sleep7421.Sleep1` s1
+INNER JOIN `sql-testing-389901.Sleep7421.Sleep2` s2 on s1.Person_ID=s2.Person_ID
+WHERE Age BETWEEN 40 AND 50
+GROUP BY Sleep_Disorder
+ORDER BY numb_disorder DESC
